@@ -1,11 +1,61 @@
+<h1 class="text-center header">Bem Vindo ao RIPE</h1>
+<span class="d-flex justify-content-center text-center header">Aqui voce conseguirá saber se sua empresa está de acordo com o mercado em relação a analise de
+    riscos</span><br>
 <div class="form-row">
-    <div class="col-md-6 m-auto pt-5 infos">
-        <h1 class="text-center">Bem Vindo ao RIPE</h1>
-        <span class="d-flex justify-content-center text-center">Aqui voce conseguirá saber se sua empresa está de acordo com o mercado em relação a analise de
-            riscos</span><br>
-            <div class="d-flex justify-content-center">
-                <a href= "#cadastro" class="btn btn-info col-md-4">Cadastre-se aqui</a>
-            </div>
+    <div class="col-md-6 m-auto infos">
+            <form class="form-signin" [formGroup]="formCadastro" (ngSubmit)="submitCadastro()">
+                <h3 class="text-center cadastro">Cadastro</h3>
+                <div class="text-center">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <mat-form-field class="" appearance="outline">
+                                <mat-label>Usuário</mat-label>
+                                <input matInput placeholder="Usuário" formControlName="login">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="" appearance="outline">
+                                <mat-label>Senha</mat-label>
+                                <input matInput type="password" placeholder="Senha" formControlName="password">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-form-field class="" appearance="outline">
+                        <mat-label>Nome</mat-label>
+                        <input matInput placeholder="Nome" formControlName="userName">
+                    </mat-form-field>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <mat-form-field class="" appearance="outline">
+                                <mat-label>Telefone</mat-label>
+                                <input matInput placeholder="Telefone" formControlName="foneNumber">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="" appearance="outline">
+                                <mat-label>Cargo</mat-label>
+                                <input matInput placeholder="Cargo" formControlName="office">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <mat-form-field class="" appearance="outline">
+                                <mat-label>Nome da empresa</mat-label>
+                                <input matInput placeholder="Nome da empresa" formControlName="companyName">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="" appearance="outline">
+                                <mat-label>Data de Nascimento</mat-label>
+                                <input matInput placeholder="Data de Nascimento" formControlName="birth">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                   
+                    <button class="btn btn-primary col-md-5" type="submit">Cadastrar</button>
+                </div>
+            </form>
     </div>
     <div class="col-md-6">
         <div class="container p-5">
@@ -21,9 +71,6 @@
                         <input matInput type="password" placeholder="Senha" formControlName="password">
                     </mat-form-field>
                     <button class="btn btn-primary col-md-5" type="submit">Entrar</button>
-                    <div class="col-md-12 pb-2">
-                        <span>Esqueceu a senha? <a href="#">clique aqui </a></span>
-                    </div>
                 </div>
             </form>
         </div>

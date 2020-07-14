@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class IndexComponent implements OnInit {
   form: FormGroup;
+  formCadastro: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private ripeService: RipeService,
@@ -18,11 +19,23 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.prepareForm();
+    this.prepareFormCadastro();
   }
   prepareForm(){
     this.form = this.formBuilder.group({
       login: [null, [Validators.required]],
       password: [null, [Validators.required]]
+    });
+  }
+  prepareFormCadastro(){
+    this.formCadastro = this.formBuilder.group({
+      login: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      userName: [null, [Validators.required]],
+      birth: [null, [Validators.required]],
+      office: [null, [Validators.required]],
+      foneNumber: [null, [Validators.required]],
+      companyName: [null, [Validators.required]],
     });
   }
   submitForm(){

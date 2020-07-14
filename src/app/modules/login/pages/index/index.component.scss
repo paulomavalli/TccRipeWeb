@@ -6,11 +6,23 @@
 }
 .infos{
     color:white;
+    background-color: #4d4d4d;
+    border-radius: 10px;;
 }
 .form-signin {
     max-width: 450px;
     padding: 15px 35px 45px;
     margin: 0 auto;
     background-color: #fff;
-    border: 1px solid rgba(0,0,0,0.1);  
+    border: 1px solid rgba(0,0,0,0.1); 
+    border-radius: 10px; 
+}
+.body{
+    color:white
+}
+.header{
+    color:white
+}
+.cadastro {
+    color: black
 }
