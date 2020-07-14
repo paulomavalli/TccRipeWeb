@@ -1,55 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img src="../../../../../assets/Imagens/logosemtexto.svg" width="30" height="30" class="d-inline-block align-top"
-        alt="" loading="lazy">
-    <a class="navbar-brand" href="#">RIPE</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" href="#">Home </a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Questionário <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Resultados</a>
-            </li>
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <a class="nav-link" routerLink="login">Claudio Manuel</a>
-        </div>
-    </div>
-</nav>
+
+<app-header-ripe></app-header-ripe>
 <div class="container conteudo">
-    <div>
-        <h1 class="text-center">Parabéns você concluiu o questionario!!</h1>
-        <div class="text-center">
-            <img class="text-center" src="../../../../assets/Imagens/trofeu.jpeg" alt="imagem de um trofeu"
-                width="300px">
-
+    <div class="form-row mb-5 pt-3">
+        <div class="text-center col-md-6">
+            <img class="text-center imagem" src="../../../../assets/Imagens/report.jpg" alt="imagem de um trofeu"
+                width="500px">
         </div>
-        <h3 class="text-center mb-5">Aqui estão algumas informações sobre sua organização</h3>
+        <div class="col-md-6">
+            <h1 class="text-center">Relatório de análise de risco</h1><br>
+            <h4 class="text-center mb-5">Seguem informações sobre o processo de análise de risco da sua
+                organização
+            </h4>
+        </div>
     </div>
     <div class="form-row">
         <div class="col-md-6">
-            <h5 class="text-center mb-5">RECOMENDAÇÕES E BOAS PRÁTICAS PARA ATINGIR UM MELHOR NÍVEL DE MATURIDADE: </h5> <br>
-            - Padronização dos processos;<br><br>
-            - Documentação e definição de ações para aumentar a efetividade da segurnança da informação;<br><br>
-            - Definir uma política para a área de segurança da informação;<br><br>
-            - Acompanhamento periódicos para detectar possíveis melhorias;<br><br>
-            - Documentação de eventos de risco;<br><br>
-            - Avaliação para otimizar as melhorias e torná-las contínuas.<br><br>
+            <h5 class="text-center mb-5">Possíveis motivações do nível obtido: </h5> <br>
+            {{resultados?.recomendacoes[0]?.habits}}
+            <h4 class="text-center">Respostas obtidas</h4>
+            <p-chart type="pie" [data]="pieChart"></p-chart>
         </div>
         <div class="col-md-6">
             <h5 class="text-center">Nível de maturidade do processo de análise de risco</h5>
             <p-chart type="bar" [data]="data" [options]="chartOptions"></p-chart>
+            <h4 class="text-center">Nível da maturidade das empresas brasileiras em análise de risco(em %)</h4>
+            <p-chart type="doughnut" [data]="doughnut"></p-chart>
             <div class="mb-4"></div>
-            <p-chart type="pie" [data]="pieChart"></p-chart>
-            <h4 class="text-center">Respostas obtidas</h4>
         </div>
     </div>
 

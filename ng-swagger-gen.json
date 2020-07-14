@@ -1,0 +1,17 @@
+{
+    "$schema": "./node_modules/ng-swagger-gen/ng-swagger-gen-schema.json",
+    "swagger": "http://localhost:44334/swagger/v1/swagger.json",
+    "output": "src/app/api/gp-api/gen",
+    "prefix": "GpApi",
+    "ignoreUnusedModels": false,
+    "minParamsForContainer": 2,
+    "sortParams": "desc",
+    "defaultTag": "GpApi",
+    "removeStaleFiles": true,
+    "modelIndex": true,
+    "serviceIndex": true,
+    "apiModule": true,
+    "enumModule": true,
+    "generateExamples": false,
+    "camelCase": false
+  }

@@ -1,29 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img src="../../../../../assets/Imagens/logosemtexto.svg" width="30" height="30" class="d-inline-block align-top"
-        alt="" loading="lazy">
-    <a class="navbar-brand" href="#">RIPE</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Questionário</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Resultados</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <a class="nav-link" routerLink="login">Login</a>
-        </form>
-    </div>
-</nav>
+<app-header-ripe></app-header-ripe>
 <div class="container cabecalho">
 
     <div class="text-center">
@@ -32,12 +7,12 @@
 
     <h1 class="text-center pb-5 m-0">Olá, seja bem vindo a plataforma RIPE</h1>
     <div class="col-md-12 form-row pb-5">
-        <button class="justify-content-center btn btn-lg btn-info m-auto">Fazer questionário</button>
+        <button class="justify-content-center btn btn-lg btn-info m-auto" (click)="botaoSend()">Fazer questionário</button>
     </div>
 </div>
 <div class="container conteudo">
     <div class="form-row mb-5">
-        <div class="col-md-6 m-auto">
+        <div class="col-md-6 m-auto texto">
             <h4 class="m-auto text-center pb-2 pt-3">Análise de risco</h4>
             <span class="m-auto">A gestão de risco é o conjunto de atividades coordenadas que têm o objetivo de
                 gerenciar e controlar uma organização em relação a potenciais ameaças, seja qual for a sua
@@ -55,7 +30,7 @@
     </div>
     <div class="form-row mb-5">
         <img class="col-md-6 metrica" src="../../../../../assets/Imagens/cobit.jpg" alt="Imagem risco">
-        <div class="col-md-6 m-auto">
+        <div class="col-md-6 m-auto texto">
             <h4 class="m-auto text-center pb-2">Cobit Framework</h4>
             <span class="m-auto">COBIT é um framework de governança corporativa de TI e possui um vasto repertório de
                 processos, indicadores e ferramentas que podem alavancar os níveis de capacidade dos processos de TI e
@@ -66,11 +41,11 @@
                 um modelo de domínios e processos e apresenta atividades em uma estrutura lógica e gerenciável. Essas
                 práticas irão ajudar a otimizar os processo em TI, assegurar a entrega dos serviços e prover métricas
                 para avaliar o nível de maturidade de acordo com os conceitos descritos pelo framework.</span><br>
-            <a href class="justify-content-center mt-3 btn btn-primary"> Descubra mais sobre o COBIT</a>
+            <a href="https://www.isaca.org/resources/cobit" class="justify-content-center mt-3 btn btn-primary"> Descubra mais sobre o COBIT</a>
         </div>
     </div>
     <div class="form-row">
-        <div class="col-md-6 m-auto">
+        <div class="col-md-6 m-auto texto">
             <h4 class="m-auto text-center pb-2">Métodos de avaliação</h4>
             <span class="m-auto">O método de avaliação tem base na escala padrão da ISO/IEC 15504 que consiste em:<br>
                 a) N (Não alcançado) – Há pouca ou nenhuma evidência de que os atributos definidos são alcançados no

@@ -1,0 +1,409 @@
+{ "swagger": "2.0",
+    "openapi": "3.0.1",
+    "info": {
+      "title": "RIPE",
+      "description": "RIPE - Aplicacao Web .",
+      "version": "v1"
+    },
+    "servers": [
+      {
+        "url": "https://localhost:44334",
+        "description": "Development"
+      },
+      {
+        "url": "https://localhost:44334/",
+        "description": "Kubernetes"
+      }
+    ],
+    "paths": {
+      "/v1/ripe/createUser": {
+        "post": {
+          "tags": [
+            "Ripe"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Response"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/ripe/login": {
+        "post": {
+          "tags": [
+            "Ripe"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationLoginRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationLoginRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthenticationLoginRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Response"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/ripe/questions": {
+        "get": {
+          "tags": [
+            "Ripe"
+          ],
+          "parameters": [
+            {
+              "name": "validateUser",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/QuestionsResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/ripe/report": {
+        "get": {
+          "tags": [
+            "Ripe"
+          ],
+          "parameters": [
+            {
+              "name": "QuantityPositiveAnswer",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "QuantityNegativeAnswer",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            {
+              "name": "QuantityNullableAnswer",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ReportResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/v1/ripe/feedback": {
+        "post": {
+          "tags": [
+            "Ripe"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackRequest"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackRequest"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "LoginRequest": {
+          "type": "object",
+          "properties": {
+            "login": {
+              "type": "string",
+              "nullable": true
+            },
+            "password": {
+              "type": "string",
+              "nullable": true
+            },
+            "userName": {
+              "type": "string",
+              "nullable": true
+            },
+            "foneNumber": {
+              "type": "string",
+              "nullable": true
+            },
+            "office": {
+              "type": "string",
+              "nullable": true
+            },
+            "birth": {
+              "type": "string",
+              "nullable": true
+            },
+            "companyName": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        },
+        "IInnerError": {
+          "type": "object"
+        },
+        "Error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "nullable": true,
+              "readOnly": true
+            },
+            "message": {
+              "type": "string",
+              "nullable": true,
+              "readOnly": true
+            },
+            "statusCode": {
+              "type": "integer",
+              "format": "int32",
+              "readOnly": true
+            },
+            "innerError": {
+              "$ref": "#/components/schemas/IInnerError"
+            },
+            "details": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "nullable": true,
+              "readOnly": true
+            }
+          }
+        },
+        "ErrorResponse": {
+          "type": "object",
+          "properties": {
+            "error": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "requestId": {
+              "type": "string",
+              "nullable": true,
+              "readOnly": true
+            }
+          }
+        },
+        "Response": {
+          "type": "object",
+          "properties": {
+            "errorResponse": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "messages": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true,
+              "readOnly": true
+            }
+          }
+        },
+        "AuthenticationLoginRequest": {
+          "type": "object",
+          "properties": {
+            "login": {
+              "type": "string",
+              "nullable": true
+            },
+            "password": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        },
+        "TypeQuestions": {
+          "type": "object",
+          "properties": {
+            "typeId": {
+              "type": "string",
+              "nullable": true
+            },
+            "typeDescription": {
+              "type": "string",
+              "nullable": true
+            },
+            "questionDescription": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            }
+          }
+        },
+        "QuestionsResponse": {
+          "type": "object",
+          "properties": {
+            "survey": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/TypeQuestions"
+              },
+              "nullable": true
+            }
+          }
+        },
+        "BestHabits": {
+          "type": "object",
+          "properties": {
+            "habits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
+            }
+          }
+        },
+        "ReportResponse": {
+          "type": "object",
+          "properties": {
+            "nivelMaturidade": {
+              "type": "string",
+              "nullable": true
+            },
+            "porcentagemRespostasPositivas": {
+              "type": "string",
+              "nullable": true
+            },
+            "porcentagemRespostasNegativas": {
+              "type": "string",
+              "nullable": true
+            },
+            "porcentagemRespostasNulas": {
+              "type": "string",
+              "nullable": true
+            },
+            "recomendacoes": {
+              "$ref": "#/components/schemas/BestHabits"
+            }
+          }
+        },
+        "FeedbackRequest": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "nullable": true
+            },
+            "customerFeedback": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "Bearer": {
+          "type": "apiKey",
+          "description": "Gerar um token jwt para efetuar a requisição, inclua 'Bearer ' + token",
+          "name": "Authorization",
+          "in": "header"
+        }
+      }
+    },
+    "security": [
+      {
+        "Bearer": [ ]
+      }
+    ]
+  }

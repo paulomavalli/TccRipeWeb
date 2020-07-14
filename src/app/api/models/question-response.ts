@@ -1,5 +1,5 @@
-import { TypeQuestions } from './type-questions';
+import { Survey } from './type-questions';
 
 export interface QuestionResponse {
-    survey: TypeQuestions[];
+    survey: Survey[];
 }

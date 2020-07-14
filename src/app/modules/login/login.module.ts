@@ -5,6 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { IndexComponent } from './pages/index/index.component';
 
 import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {MatInputModule} from '@angular/material/input';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   exports: [
     IndexComponent

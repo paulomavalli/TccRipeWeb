@@ -14,6 +14,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { GoogleChart } from './resultados/angular2-google-chart.directive';
 import {ChartModule} from 'primeng/chart';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HeaderRipeModule } from 'src/app/shared/header-ripe/header-ripe.module';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import {ChartModule} from 'primeng/chart';
     GoogleChartsModule,
     ChartModule,
     MatRadioModule,
+    HeaderRipeModule
   ]
 })
 export class AreaUsuarioModule { }

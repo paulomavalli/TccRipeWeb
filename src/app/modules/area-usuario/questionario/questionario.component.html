@@ -1,106 +1,208 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img src="../../../../../assets/Imagens/logosemtexto.svg" width="30" height="30" class="d-inline-block align-top"
-        alt="" loading="lazy">
-    <a class="navbar-brand" href="#">RIPE</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" href="#">Home </a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Questionário <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Resultados</a>
-            </li>
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <a class="nav-link" routerLink="login">Claudio Manuel</a>
-        </div>
-    </div>
-</nav>
+<app-header-ripe></app-header-ripe>
 <div class="container conteudo">
     <!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
         {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
     </button> -->
     <mat-horizontal-stepper [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup">
-            <form [formGroup]="firstFormGroup">
-                <ng-template matStepLabel>Questionário de Organização</ng-template>
-                <mat-label><strong>Pergunta 1 -  Explora adequadamente as ameaças identificadas pela ocorrência de determinados riscos?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
-                <mat-label><strong>Pergunta 2 -  Explora adequadamente as oportunidades identificadas pela ocorrência de determinados riscos?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
-                <mat-label><strong>Pergunta 3 -  Depende das iniciativas de caráter individual para o sucesso do gerenciamento de riscos?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
-                <mat-label><strong>Pergunta 4 -  Não é uma organização "orientada a riscos"?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
-                <mat-label><strong>Pergunta 5 -  Tem alta probabilidade de ocorrência de eventos que impactem fortemente e negativamente?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
+        <mat-step [stepControl]="primeiroFormGroup">
+            <form [formGroup]="primeiroFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[0].typeDescription}}</strong></mat-label><br>
+                </div>
+
+                <mat-label><strong>Atualmente a organização :</strong></mat-label><br>
+
+                <div *ngFor="let questao of questoes?.survey[0]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="primeiroCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
                 <div>
                     <button mat-button matStepperNext>Próximo</button>
                 </div>
             </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Questionario de Conceito de Risco</ng-template>
-                <mat-label><strong>Pergunta 1 -  Risco está relacionado com o nível de satisfação e a expectativa do cliente?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
-                <mat-label><strong>Pergunta 2 - Risco está relacionado com o alcance dos objetivos da organização?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
-                <mat-label><strong>Pergunta 3 -  O conceito de risco tem mais foco no cliente do que na organização?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
-                <mat-label><strong>Pergunta 4 -   Risco é o efeito acumulativo da probabilidade de ocorrências incertas que podem afetar positivamente ou negativamente os objetivos finais da organização?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
-                <mat-label><strong>Pergunta 5 -  A organização atualmente avalia o processo de análise de riscos como um fator de extrema importância?</strong></mat-label><br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Sim</mat-radio-button><br>
-                    <mat-radio-button value="2">Não </mat-radio-button><br>
-                    <mat-radio-button value="3">Não se aplica</mat-radio-button><br>
-                </mat-radio-group>
-                <div>
+        <mat-step [stepControl]="segundoFormGroup">
+            <form [formGroup]="segundoFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[1].typeDescription}}</strong></mat-label><br>
+                </div>
+                <div *ngFor="let questao of questoes?.survey[1]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="segundoCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+                 <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="terceiroFormGroup">
+            <form [formGroup]="terceiroFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[2].typeDescription}}</strong></mat-label><br>
+                </div>
+                <div *ngFor="let questao of questoes?.survey[2]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="terceiroCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+                 <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="quartoFormGroup">
+            <form [formGroup]="quartoFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[3].typeDescription}}</strong></mat-label><br>
+                </div>
+                <mat-label><strong>Existe uma atenção especial aos :</strong></mat-label><br>
+                	
+                <div *ngFor="let questao of questoes?.survey[3]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="quartoCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+                 <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="quintoFormGroup">
+            <form [formGroup]="quintoFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[4].typeDescription}}</strong></mat-label><br>
+                </div>
+                <div *ngFor="let questao of questoes?.survey[4]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="quintoCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+                 <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="sextoFormGroup">
+            <form [formGroup]="sextoFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[5].typeDescription}}</strong></mat-label><br>
+                </div>
+                <div *ngFor="let questao of questoes?.survey[5]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="sextoCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+                 <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="setimoFormGroup">
+            <form [formGroup]="setimoFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[6].typeDescription}}</strong></mat-label><br>
+                </div>
+                <div *ngFor="let questao of questoes?.survey[6]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="setimoCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+                 <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="oitavoFormGroup">
+            <form [formGroup]="oitavoFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[7].typeDescription}}</strong></mat-label><br>
+                </div>
+                <div *ngFor="let questao of questoes?.survey[7]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="oitavoCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+                 <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="nonoFormGroup">
+            <form [formGroup]="nonoFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[8].typeDescription}}</strong></mat-label><br>
+                </div>
+                <div *ngFor="let questao of questoes?.survey[8]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="nonoCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+                 <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="decimoFormGroup">
+            <form [formGroup]="decimoFormGroup">
+                <ng-template matStepLabel></ng-template>
+                <div class="text-center">
+                    <mat-label class="titulos text-center"><strong>{{questoes.survey[9].typeDescription}}</strong></mat-label><br>
+                </div>
+                <div *ngFor="let questao of questoes?.survey[9]?.questionDescription"> 
+                    <mat-label><strong>{{questao}}</strong></mat-label><br>
+                    <mat-radio-group aria-label="Select an option" formControlName="decimoCtrl">
+                        <mat-radio-button (click)="add(1)" value="1">Sim</mat-radio-button><br>
+                        <mat-radio-button (click)="add(2)" value="2">Não </mat-radio-button><br>
+                        <mat-radio-button (click)="add(3)" value="3">Não se aplica</mat-radio-button><br>
+                    </mat-radio-group>
+                </div>
+                 <div>
                     <button mat-button matStepperPrevious>Back</button>
                     <button mat-button matStepperNext>Next</button>
                 </div>
@@ -108,10 +210,11 @@
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>Finalizado</ng-template>
-            <p>O questionário foi finalizado</p>
+            <p>O questionário foi finalizado, clique no botão de concluir para ter acesso a avaliação!</p>
             <div>
                 <button mat-button matStepperPrevious>Voltar</button>
                 <button mat-button (click)="stepper.reset()">Resetar</button>
+                <button mat-button (click)="submitForm()">Concluir</button>
             </div>
         </mat-step>
     </mat-horizontal-stepper>

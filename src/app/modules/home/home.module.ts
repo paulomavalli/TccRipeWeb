@@ -5,6 +5,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { IndexComponent } from './pages/index/index.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HeaderRipeModule } from 'src/app/shared/header-ripe/header-ripe.module';
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import {MatIconModule} from '@angular/material/icon';
     CommonModule,
     HomeRoutingModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    HeaderRipeModule
   ]
 })
 export class HomeModule { }

@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './modules/login/login.module';
 import { QuestionarioComponent } from './modules/area-usuario/questionario/questionario.component';
 import { ResultadosComponent } from './modules/area-usuario/resultados/resultados.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ResultadosComponent } from './modules/area-usuario/resultados/resultado
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,  
-    LoginModule
+    LoginModule,
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,18 +9,18 @@
     </div>
     <div class="col-md-6">
         <div class="container p-5">
-            <form class="form-signin">
+            <form class="form-signin" [formGroup]="form" (ngSubmit)="submitForm()">
                 <h3 class="text-center">Login</h3>
                 <div class="text-center">
                     <mat-form-field class="" appearance="outline">
                         <mat-label>Usuário</mat-label>
-                        <input matInput placeholder="Usuário">
+                        <input matInput placeholder="Usuário" formControlName="login">
                     </mat-form-field>
                     <mat-form-field class="" appearance="outline">
                         <mat-label>Senha</mat-label>
-                        <input matInput type="password" placeholder="Senha">
+                        <input matInput type="password" placeholder="Senha" formControlName="password">
                     </mat-form-field>
-                    <button class="btn btn-primary col-md-5">Entrar</button>
+                    <button class="btn btn-primary col-md-5" type="submit">Entrar</button>
                     <div class="col-md-12 pb-2">
                         <span>Esqueceu a senha? <a href="#">clique aqui </a></span>
                     </div>
