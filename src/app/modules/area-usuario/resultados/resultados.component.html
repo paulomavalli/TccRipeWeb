@@ -16,15 +16,15 @@
     </div>
     <div class="form-row">
         <div class="col-md-6">
-            <h5 class="text-center mb-5">Possíveis motivações do nível obtido: </h5> <br>
-            {{resultados?.recomendacoes[0]?.habits}}
-            <h4 class="text-center">Respostas obtidas</h4>
+            <h5 class="text-center mb-2">Alguns requisitos a serem seguidos para alcançar o próximo nível de maturidade: </h5> <br>
+            <div [innerHTML]="resultados?.recomendacoes?.habits"></div>
+            <h4 class=" mt-4 text-center">Respostas obtidas</h4>
             <p-chart type="pie" [data]="pieChart"></p-chart>
         </div>
         <div class="col-md-6">
             <h5 class="text-center">Nível de maturidade do processo de análise de risco</h5>
             <p-chart type="bar" [data]="data" [options]="chartOptions"></p-chart>
-            <h4 class="text-center">Nível da maturidade das empresas brasileiras em análise de risco(em %)</h4>
+            <h4 class="text-center mt-4">Nível da maturidade das empresas brasileiras em análise de risco(em %)</h4>
             <p-chart type="doughnut" [data]="doughnut"></p-chart>
             <div class="mb-4"></div>
         </div>

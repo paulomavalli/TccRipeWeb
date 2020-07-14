@@ -38,6 +38,27 @@ export class IndexComponent implements OnInit {
       companyName: [null, [Validators.required]],
     });
   }
+  submitCadastro(){
+    let loginRequest = {
+      login: this.formCadastro.value.login,
+      password: this.formCadastro.value.password,
+      userName: this.formCadastro.value.userName,
+      birth: this.formCadastro.value.birth,
+      office: this.formCadastro.value.office,
+      foneNumber: this.formCadastro.value.foneNumber,
+      companyName: this.formCadastro.value.companyName,
+    };
+    this.ripeService.postCadastro(loginRequest).subscribe(
+      res => {
+        console.log(res)
+        if(res.sucess === true) {
+          localStorage.setItem('loginUsuario', this.formCadastro.value.login)
+          this.router.navigate(['/'])
+        }
+      },
+      err =>  console.log(err)
+    )
+  }
   submitForm(){
     let loginRequest = {
       login: this.form.value.login,
